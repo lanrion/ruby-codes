@@ -19,12 +19,11 @@
 # p b.name
 
 def yield_test
-	[1,2,3,4,5,6,7].each do |item|
-		yield item
-		puts "current index is #{item}"
+	[1,2,3,4,5,6,7].each_with_index do |item, index|
+		yield(item, index)
 	end
 end
 
-yield_test do |i|
-	 i = i+1
+yield_test do |x, y|
+  puts "The x value: #{x} and the y value: #{y}"
 end
