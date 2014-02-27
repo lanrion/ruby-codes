@@ -2,7 +2,7 @@ class ArrayParams
 
 
   def test_array_params(*modules)
-    puts modules
+    p modules
   end
 
 end
