@@ -1,3 +1,6 @@
+require "pry-rails"
+require "pry-debugger"
+
 class Block
   def self.use_block(&block)
     yield block
@@ -5,7 +8,16 @@ class Block
 
   def method_missing(method_id, *arguments, &block)
     puts "no method"
-    super
+    if method_id =~ /find/
+      self.class.class_eval do
+        define_method(method_id) do |arg|
+          arg
+        end
+      end
+      arguments.first
+    else
+      super
+    end
   end
 end
 
@@ -19,4 +31,6 @@ end
 
 # Block.use_block(pro)
 
-Block.new.find(1)
+puts Block.new.find(1)
+binding.pry
+puts Block.new.find(18888)
