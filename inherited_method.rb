@@ -27,7 +27,7 @@ end
 class Baz < Foo
 end
 
-binding.pry
+puts __FILE__
 
 bar = Bar.new
 
